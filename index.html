@@ -113,6 +113,7 @@ tfoot td:not(:first-child){text-align:right;}
     <button class="view-btn" onclick="goTo('carrier',this)">🚚 &nbsp;Por carrier</button>
     <button class="view-btn" onclick="goTo('tabla',this)">📋 &nbsp;Tabla detalle</button>
     <button class="view-btn" onclick="goTo('quejas',this)">💬 &nbsp;¿De qué se quejan?</button>
+    <button class="view-btn" onclick="goTo('delivery',this)">📦 &nbsp;Delivery Rate</button>
   </div>
 
   <!-- Carriers -->
@@ -443,6 +444,109 @@ tfoot td:not(:first-child){text-align:right;}
     </div>
   </div>
 
+</div>
+
+<!-- ══ DELIVERY RATE ══ -->
+<div id="delivery" class="page">
+  <div class="page-header">
+    <h1>Delivery Rate</h1>
+    <p>Entregados / Total envíos · ene 2026 – 16 jul 2026 · higher is better <span class="partial-badge">Jul parcial</span></p>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-accent" style="background:#60A5FA;"></div>
+      <div class="kpi-val" style="color:#60A5FA;">84.94%</div>
+      <div class="kpi-lbl">DHL · prom. 7 meses</div>
+      <div class="kpi-note" style="color:#C62828;">el más bajo · jul: 73.87%</div></div>
+    <div class="kpi"><div class="kpi-accent" style="background:#26C6A0;"></div>
+      <div class="kpi-val" style="color:#26C6A0;">89.90%</div>
+      <div class="kpi-lbl">Estafeta · prom. 7 meses</div>
+      <div class="kpi-note" style="color:#888;">jul: 75.57%</div></div>
+    <div class="kpi"><div class="kpi-accent" style="background:#E040A0;"></div>
+      <div class="kpi-val" style="color:#E040A0;">90.29%</div>
+      <div class="kpi-lbl">99min · prom. 7 meses</div>
+      <div class="kpi-note" style="color:#2E7D32;">el más alto · jul: 76.36%</div></div>
+    <div class="kpi"><div class="kpi-accent" style="background:#C62828;"></div>
+      <div class="kpi-val" style="color:#C62828;">⚠️ Jul</div>
+      <div class="kpi-lbl">Caída fuerte en julio</div>
+      <div class="kpi-note" style="color:#C62828;">3 carriers bajaron ~16pp vs prom</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Delivery Rate por mes y carrier</div>
+    <div class="card-sub">% entregados / total envíos · higher is better</div>
+    <div style="position:relative;height:320px;"><canvas id="chartDR"></canvas></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card" style="margin-bottom:0;">
+      <div class="card-title">Tendencia por carrier</div>
+      <div class="card-sub">Línea de delivery rate mensual</div>
+      <div style="position:relative;height:280px;"><canvas id="chartDRLine"></canvas></div>
+    </div>
+    <div class="card" style="margin-bottom:0;">
+      <div class="card-title">Detalle mensual</div>
+      <div class="card-sub">Total envíos · entregados · DR% · color = severidad invertida (verde = alto)</div>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Mes</th>
+            <th colspan="2" style="text-align:center;background:#0F2A3A;">DHL</th>
+            <th colspan="2" style="text-align:center;background:#0F3A28;">Estafeta</th>
+            <th colspan="2" style="text-align:center;background:#3A1A30;">99min</th>
+          </tr>
+          <tr style="font-size:10px;">
+            <th></th>
+            <th style="background:#0F2A3A;">Total</th><th style="background:#0F2A3A;text-align:center;">DR%</th>
+            <th style="background:#0F3A28;">Total</th><th style="background:#0F3A28;text-align:center;">DR%</th>
+            <th style="background:#3A1A30;">Total</th><th style="background:#3A1A30;text-align:center;">DR%</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="font-weight:500;">Ene 26</td><td>45,866</td><td style="text-align:center;"><span class="cr cr-o">85.23%</span></td><td>449,194</td><td style="text-align:center;"><span class="cr cr-g">92.35%</span></td><td>234,433</td><td style="text-align:center;"><span class="cr cr-g">93.37%</span></td></tr>
+          <tr><td style="font-weight:500;">Feb 26</td><td>26,697</td><td style="text-align:center;"><span class="cr cr-g">88.29%</span></td><td>233,215</td><td style="text-align:center;"><span class="cr cr-g">92.64%</span></td><td>126,251</td><td style="text-align:center;"><span class="cr cr-g">94.19%</span></td></tr>
+          <tr><td style="font-weight:500;">Mar 26</td><td>46,268</td><td style="text-align:center;"><span class="cr cr-o">86.31%</span></td><td>460,282</td><td style="text-align:center;"><span class="cr cr-g">91.54%</span></td><td>242,241</td><td style="text-align:center;"><span class="cr cr-g">91.72%</span></td></tr>
+          <tr><td style="font-weight:500;">Abr 26</td><td>43,933</td><td style="text-align:center;"><span class="cr cr-g">88.06%</span></td><td>412,183</td><td style="text-align:center;"><span class="cr cr-g">91.99%</span></td><td>216,280</td><td style="text-align:center;"><span class="cr cr-g">91.99%</span></td></tr>
+          <tr><td style="font-weight:500;">May 26</td><td>37,762</td><td style="text-align:center;"><span class="cr cr-o">86.49%</span></td><td>356,481</td><td style="text-align:center;"><span class="cr cr-g">92.73%</span></td><td>183,748</td><td style="text-align:center;"><span class="cr cr-g">92.57%</span></td></tr>
+          <tr><td style="font-weight:500;">Jun 26</td><td>39,547</td><td style="text-align:center;"><span class="cr cr-o">86.36%</span></td><td>342,972</td><td style="text-align:center;"><span class="cr cr-g">92.45%</span></td><td>177,376</td><td style="text-align:center;"><span class="cr cr-g">91.82%</span></td></tr>
+          <tr><td style="font-weight:500;">Jul 26* <span class="partial-badge">Parcial</span></td><td>18,693</td><td style="text-align:center;"><span class="cr cr-r">73.87%</span></td><td>168,771</td><td style="text-align:center;"><span class="cr cr-r">75.57%</span></td><td>87,704</td><td style="text-align:center;"><span class="cr cr-r">76.36%</span></td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td>PROM.</td><td>—</td><td style="text-align:center;"><span style="background:#E65100;color:#fff;padding:2px 7px;border-radius:7px;font-size:11px;font-weight:600;">84.94%</span></td>
+          <td>—</td><td style="text-align:center;"><span style="background:#2E7D32;color:#fff;padding:2px 7px;border-radius:7px;font-size:11px;font-weight:600;">89.90%</span></td>
+          <td>—</td><td style="text-align:center;"><span style="background:#2E7D32;color:#fff;padding:2px 7px;border-radius:7px;font-size:11px;font-weight:600;">90.29%</span></td></tr>
+        </tfoot>
+      </table>
+      </div>
+      <p class="footnote">* Jul 2026 parcial al 16 jul · Fuente: etl.mx__dataset.logistics_information · product_type = card</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px;">
+    <div class="card-title">⚠️ Julio 2026 — Caída significativa en delivery rate</div>
+    <div class="card-sub">Los 3 carriers cayeron ~15–18pp vs su promedio ene–jun · posiblemente efecto de mes parcial (envíos recientes aún en tránsito)</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+      <div style="background:#FFF5F5;border-radius:8px;padding:14px;border-top:3px solid #60A5FA;">
+        <div style="font-size:11px;font-weight:600;color:#60A5FA;">DHL</div>
+        <div style="font-size:22px;font-weight:700;color:#C62828;margin:4px 0;">73.87%</div>
+        <div style="font-size:11px;color:#888;">vs prom. 86.12% ene–jun · −12.25pp</div>
+      </div>
+      <div style="background:#FFF5F5;border-radius:8px;padding:14px;border-top:3px solid #26C6A0;">
+        <div style="font-size:11px;font-weight:600;color:#26C6A0;">Estafeta</div>
+        <div style="font-size:22px;font-weight:700;color:#C62828;margin:4px 0;">75.57%</div>
+        <div style="font-size:11px;color:#888;">vs prom. 92.28% ene–jun · −16.71pp</div>
+      </div>
+      <div style="background:#FFF5F5;border-radius:8px;padding:14px;border-top:3px solid #E040A0;">
+        <div style="font-size:11px;font-weight:600;color:#E040A0;">99min</div>
+        <div style="font-size:22px;font-weight:700;color:#C62828;margin:4px 0;">76.36%</div>
+        <div style="font-size:11px;color:#888;">vs prom. 92.61% ene–jun · −16.25pp</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:10px 14px;background:#FFF8F0;border-radius:6px;border-left:3px solid #F4A020;font-size:12px;color:#555;">
+      💡 La caída en julio es esperada en datos parciales — los envíos de la segunda quincena aún están en tránsito y no han sido marcados como entregados. El delivery rate real de julio cerrará más alto al final del mes.
+    </div>
+  </div>
 </div>
 
 </main>
@@ -853,6 +957,69 @@ function buildQuejasChart(carrier) {
 updateFiltersBar();
 renderResumen();
 setTimeout(()=>buildQuejasChart('DHL'),200);
+
+// ── DELIVERY RATE CHARTS ──
+(function buildDRCharts(){
+  const months = ['Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26*'];
+  const DR = {
+    'DHL':     [85.23,88.29,86.31,88.06,86.49,86.36,73.87],
+    'Estafeta':[92.35,92.64,91.54,91.99,92.73,92.45,75.57],
+    '99min':   [93.37,94.19,91.72,91.99,92.57,91.82,76.36],
+  };
+  const COLS = {'DHL':'#60A5FA','Estafeta':'#26C6A0','99min':'#E040A0'};
+  const XODR = {ticks:{color:'#555',font:{size:10},maxRotation:0},grid:{display:false},border:{display:false}};
+  const YODR = {ticks:{color:'#aaa',font:{size:10},callback:v=>v.toFixed(1)+'%'},grid:{color:'rgba(180,180,180,.12)'},border:{display:false},min:65,max:100};
+
+  // DR top label plugin
+  const drTopPlugin = {id:'drTop',afterDatasetsDraw(chart){
+    const ctx=chart.ctx;
+    chart.data.datasets.forEach((ds,di)=>{
+      const meta=chart.getDatasetMeta(di); if(meta.hidden) return;
+      const c=Object.keys(DR)[di];
+      meta.data.forEach((bar,mi)=>{
+        const val=DS_ORDER[di][mi];
+        const p=bar.getProps(['x','y','width'],true);
+        const barW=Math.abs(p.width||0); if(barW<16) return;
+        ctx.save(); ctx.textAlign='center';
+        ctx.fillStyle=COLS[c];
+        ctx.font=`600 ${Math.min(11,Math.max(9,barW*.36))}px -apple-system,sans-serif`;
+        ctx.fillText(val.toFixed(1)+'%',p.x,p.y-6);
+        ctx.restore();
+      });
+    });
+  }};
+
+  const DS_ORDER = [DR['DHL'],DR['Estafeta'],DR['99min']];
+
+  new Chart(document.getElementById('chartDR'),{
+    type:'bar',
+    data:{labels:months,datasets:Object.entries(DR).map(([c,v])=>({
+      label:c,data:v,backgroundColor:months.map((m,i)=>m.includes('*')?COLS[c]+'80':COLS[c]),
+      borderRadius:4,borderWidth:0
+    }))},
+    options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:22}},
+      scales:{x:XODR,y:YODR},
+      plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:8,padding:10}},
+        tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)}%`}}}
+    },plugins:[drTopPlugin]
+  });
+
+  new Chart(document.getElementById('chartDRLine'),{
+    type:'line',
+    data:{labels:months,datasets:Object.entries(DR).map(([c,v])=>({
+      label:c,data:v,borderColor:COLS[c],backgroundColor:COLS[c]+'15',
+      borderWidth:2.5,pointRadius:5,
+      pointBackgroundColor:v.map((val,i)=>i===v.length-1?COLS[c]+'80':COLS[c]),
+      tension:.3,fill:true
+    }))},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      scales:{x:XODR,y:{...YODR,title:{display:true,text:'Delivery Rate %',color:'#aaa',font:{size:10}}}},
+      plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:8,padding:10}},
+        tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)}%`}}}
+    }
+  });
+})();
+
 </script>
 </body>
 </html>
