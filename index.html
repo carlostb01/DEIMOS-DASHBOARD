@@ -453,7 +453,24 @@ tfoot td:not(:first-child){text-align:right;}
     <p>Entregados / Total envíos · ene 2026 – 16 jul 2026 · higher is better <span class="partial-badge">Jul parcial</span></p>
   </div>
 
-  <div class="kpi-grid" id="drKpiGrid"></div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-accent" style="background:#60A5FA;"></div>
+      <div class="kpi-val" style="color:#60A5FA;">83.88%</div>
+      <div class="kpi-lbl">DHL · prom. 7 meses</div>
+      <div class="kpi-note" style="color:#C62828;">el más bajo · mejor: 87.68% feb</div></div>
+    <div class="kpi"><div class="kpi-accent" style="background:#26C6A0;"></div>
+      <div class="kpi-val" style="color:#26C6A0;">88.99%</div>
+      <div class="kpi-lbl">Estafeta · prom. 7 meses</div>
+      <div class="kpi-note" style="color:#888;">mejor: 92.21% jun</div></div>
+    <div class="kpi"><div class="kpi-accent" style="background:#E040A0;"></div>
+      <div class="kpi-val" style="color:#E040A0;">90.28%</div>
+      <div class="kpi-lbl">99min · prom. 7 meses</div>
+      <div class="kpi-note" style="color:#2E7D32;">el más alto · mejor: 94.37% feb</div></div>
+    <div class="kpi"><div class="kpi-accent" style="background:#C62828;"></div>
+      <div class="kpi-val" style="color:#C62828;">⚠️ Jul</div>
+      <div class="kpi-lbl">Caída fuerte en julio</div>
+      <div class="kpi-note" style="color:#C62828;">3 carriers bajaron ~16pp vs prom</div></div>
+  </div>
 
   <div class="card">
     <div class="card-title">Delivery Rate por mes y carrier</div>
@@ -472,16 +489,64 @@ tfoot td:not(:first-child){text-align:right;}
       <div class="card-sub">Total envíos · entregados · DR% · color = severidad invertida (verde = alto)</div>
       <div style="overflow-x:auto;">
       <table>
-        <thead id="drTableHead"></thead>
-        <tbody id="drTableBody"></tbody>
-        <tfoot id="drTableFoot"></tfoot>
+        <thead>
+          <tr>
+            <th>Mes</th>
+            <th colspan="2" style="text-align:center;background:#0F2A3A;">DHL</th>
+            <th colspan="2" style="text-align:center;background:#0F3A28;">Estafeta</th>
+            <th colspan="2" style="text-align:center;background:#3A1A30;">99min</th>
+          </tr>
+          <tr style="font-size:10px;">
+            <th></th>
+            <th style="background:#0F2A3A;">Total</th><th style="background:#0F2A3A;text-align:center;">DR%</th>
+            <th style="background:#0F3A28;">Total</th><th style="background:#0F3A28;text-align:center;">DR%</th>
+            <th style="background:#3A1A30;">Total</th><th style="background:#3A1A30;text-align:center;">DR%</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="font-weight:500;">Ene 26</td><td>36,670</td><td style="text-align:center;"><span class="cr cr-o">83.97%</span></td><td>357,730</td><td style="text-align:center;"><span class="cr cr-g">90.73%</span></td><td>185,030</td><td style="text-align:center;"><span class="cr cr-g">93.46%</span></td></tr>
+          <tr><td style="font-weight:500;">Feb 26</td><td>20,738</td><td style="text-align:center;"><span class="cr cr-g">87.68%</span></td><td>185,203</td><td style="text-align:center;"><span class="cr cr-g">91.58%</span></td><td>96,497</td><td style="text-align:center;"><span class="cr cr-g">94.37%</span></td></tr>
+          <tr><td style="font-weight:500;">Mar 26</td><td>38,867</td><td style="text-align:center;"><span class="cr cr-o">84.09%</span></td><td>392,259</td><td style="text-align:center;"><span class="cr cr-g">90.17%</span></td><td>199,476</td><td style="text-align:center;"><span class="cr cr-g">92.05%</span></td></tr>
+          <tr><td style="font-weight:500;">Abr 26</td><td>30,925</td><td style="text-align:center;"><span class="cr cr-g">87.26%</span></td><td>290,616</td><td style="text-align:center;"><span class="cr cr-g">91.69%</span></td><td>151,573</td><td style="text-align:center;"><span class="cr cr-g">91.90%</span></td></tr>
+          <tr><td style="font-weight:500;">May 26</td><td>26,847</td><td style="text-align:center;"><span class="cr cr-o">85.32%</span></td><td>252,491</td><td style="text-align:center;"><span class="cr cr-g">92.17%</span></td><td>128,726</td><td style="text-align:center;"><span class="cr cr-g">92.50%</span></td></tr>
+          <tr><td style="font-weight:500;">Jun 26</td><td>28,307</td><td style="text-align:center;"><span class="cr cr-o">85.98%</span></td><td>250,049</td><td style="text-align:center;"><span class="cr cr-g">92.21%</span></td><td>128,506</td><td style="text-align:center;"><span class="cr cr-g">91.63%</span></td></tr>
+          <tr><td style="font-weight:500;">Jul 26* <span class="partial-badge">Parcial</span></td><td>13,324</td><td style="text-align:center;"><span class="cr cr-r">72.86%</span></td><td>119,860</td><td style="text-align:center;"><span class="cr cr-r">74.37%</span></td><td>62,275</td><td style="text-align:center;"><span class="cr cr-r">76.05%</span></td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td>PROM.</td><td>—</td><td style="text-align:center;"><span style="background:#E65100;color:#fff;padding:2px 7px;border-radius:7px;font-size:11px;font-weight:600;">83.88%</span></td>
+          <td>—</td><td style="text-align:center;"><span style="background:#2E7D32;color:#fff;padding:2px 7px;border-radius:7px;font-size:11px;font-weight:600;">88.99%</span></td>
+          <td>—</td><td style="text-align:center;"><span style="background:#2E7D32;color:#fff;padding:2px 7px;border-radius:7px;font-size:11px;font-weight:600;">90.28%</span></td></tr>
+        </tfoot>
       </table>
       </div>
-      <p class="footnote">* Jul 2026 parcial al 16 jul · Fuente: etl.mx__dataset.logistics_information · product_type = card</p>
+      <p class="footnote">* Jul 2026 parcial al 16 jul · Fuente: etl.mx__contract.frodo__deliveries · delivery__created_at (MX timezone)</p>
     </div>
   </div>
 
-  <div class="card" style="margin-top:14px;" id="drAlertCard"></div>
+  <div class="card" style="margin-top:14px;">
+    <div class="card-title">⚠️ Julio 2026 — Caída significativa en delivery rate</div>
+    <div class="card-sub">Los 3 carriers cayeron ~15–18pp vs su promedio ene–jun · posiblemente efecto de mes parcial (envíos recientes aún en tránsito)</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+      <div style="background:#FFF5F5;border-radius:8px;padding:14px;border-top:3px solid #60A5FA;">
+        <div style="font-size:11px;font-weight:600;color:#60A5FA;">DHL</div>
+        <div style="font-size:22px;font-weight:700;color:#C62828;margin:4px 0;">72.86%</div>
+        <div style="font-size:11px;color:#888;">vs prom. 85.72% ene–jun · −12.86pp</div>
+      </div>
+      <div style="background:#FFF5F5;border-radius:8px;padding:14px;border-top:3px solid #26C6A0;">
+        <div style="font-size:11px;font-weight:600;color:#26C6A0;">Estafeta</div>
+        <div style="font-size:22px;font-weight:700;color:#C62828;margin:4px 0;">74.37%</div>
+        <div style="font-size:11px;color:#888;">vs prom. 91.09% ene–jun · −16.72pp</div>
+      </div>
+      <div style="background:#FFF5F5;border-radius:8px;padding:14px;border-top:3px solid #E040A0;">
+        <div style="font-size:11px;font-weight:600;color:#E040A0;">99min</div>
+        <div style="font-size:22px;font-weight:700;color:#C62828;margin:4px 0;">76.05%</div>
+        <div style="font-size:11px;color:#888;">vs prom. 92.67% ene–jun · −16.62pp</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:10px 14px;background:#FFF8F0;border-radius:6px;border-left:3px solid #F4A020;font-size:12px;color:#555;">
+      💡 La caída en julio es esperada en datos parciales — los envíos de la segunda quincena aún están en tránsito y no han sido marcados como entregados. El delivery rate real de julio cerrará más alto al final del mes.
+    </div>
+  </div>
 </div>
 
 </main>
@@ -493,12 +558,9 @@ const ALL_MONTHS = ['Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 2
 const CARRIER_COLORS = { 'DHL':'#60A5FA', 'Estafeta':'#26C6A0', '99min':'#E040A0' };
 
 const RAW = {
-  'DHL':     { cr:[3.68,3.28,1.76,3.48,4.99,3.39,2.18], tix:[135,68,68,108,134,96,29],  env:[36670,20730,38715,31077,26847,28307,13324],
-               dr:[85.23,88.29,86.31,88.06,86.49,86.36,73.87], drTotal:[45866,26697,46268,43933,37762,39547,18693] },
-  'Estafeta':{ cr:[3.81,5.43,2.82,5.68,5.80,4.58,3.45], tix:[1363,1005,1097,1669,1464,1144,414], env:[357730,185203,389275,293600,252491,250049,119860],
-               dr:[92.35,92.64,91.54,91.99,92.73,92.45,75.57], drTotal:[449194,233215,460282,412183,356481,342972,168771] },
-  '99min':   { cr:[8.29,11.54,6.06,10.56,9.92,6.44,3.81], tix:[1533,1114,1200,1617,1277,828,237], env:[185030,96497,197870,153179,128726,128506,62275],
-               dr:[93.37,94.19,91.72,91.99,92.57,91.82,76.36], drTotal:[234433,126251,242241,216280,183748,177376,87704] },
+  'DHL':     { cr:[3.68,3.28,1.76,3.48,4.99,3.39,2.18], tix:[135,68,68,108,134,96,29],  env:[36670,20730,38715,31077,26847,28307,13324] },
+  'Estafeta':{ cr:[3.81,5.43,2.82,5.68,5.80,4.58,3.45], tix:[1363,1005,1097,1669,1464,1144,414], env:[357730,185203,389275,293600,252491,250049,119860] },
+  '99min':   { cr:[8.29,11.54,6.06,10.56,9.92,6.44,3.81], tix:[1533,1114,1200,1617,1277,828,237], env:[185030,96497,197870,153179,128726,128506,62275] },
 };
 
 let state = {
@@ -597,7 +659,6 @@ function renderPage(page) {
   if(page==='tendencia') renderTendencia();
   if(page==='carrier')   renderCarrier();
   if(page==='tabla')     renderTabla();
-  if(page==='delivery')  renderDelivery();
 }
 
 function renderResumen() {
@@ -897,165 +958,78 @@ updateFiltersBar();
 renderResumen();
 setTimeout(()=>buildQuejasChart('DHL'),200);
 
-// ── DELIVERY RATE ──
-function renderDelivery() {
-  const sortedMonths = state.months.slice().sort((a,b)=>ALL_MONTHS.indexOf(a)-ALL_MONTHS.indexOf(b));
-  const carriers = state.carriers;
-
-  // sevColor inverted for DR (higher = better)
-  const drSevColor = v => v<75?'#C62828':v<85?'#E65100':v<90?'#F9A825':'#2E7D32';
-  const drSevBg    = v => v<75?'#FFEBEE':v<85?'#FFF3E0':v<90?'#FFFDE7':'#E8F5E9';
-  const drBadge    = v => `<span style="background:${drSevBg(v)};color:${drSevColor(v)};padding:2px 7px;border-radius:7px;font-weight:600;font-size:11px;">${v.toFixed(2)}%</span>`;
-  const drClass    = v => v<75?'cr-r':v<85?'cr-o':v<90?'cr-y':'cr-g';
-
-  // KPIs: prom. por carrier + una card de alerta si el último mes cae fuerte
-  const kpiGrid = document.getElementById('drKpiGrid');
-  kpiGrid.innerHTML='';
-  const avgs = {};
-  carriers.forEach(c=>{
-    const vals = sortedMonths.map(m=>RAW[c].dr[ALL_MONTHS.indexOf(m)]);
-    const avg = vals.reduce((a,b)=>a+b,0)/vals.length;
-    avgs[c]=avg;
-  });
-  const best = carriers.length ? carriers.reduce((a,b)=>avgs[a]>avgs[b]?a:b) : null;
-  const worst = carriers.length ? carriers.reduce((a,b)=>avgs[a]<avgs[b]?a:b) : null;
-  const lastMonth = sortedMonths[sortedMonths.length-1];
-  const lastIdx = lastMonth ? ALL_MONTHS.indexOf(lastMonth) : -1;
-
-  carriers.forEach(c=>{
-    const lastVal = lastIdx>=0 ? RAW[c].dr[lastIdx] : null;
-    const note = c===worst ? `el más bajo${lastVal!==null?` · ${lastMonth}: ${lastVal.toFixed(2)}%`:''}`
-               : c===best ? `el más alto${lastVal!==null?` · ${lastMonth}: ${lastVal.toFixed(2)}%`:''}`
-               : `${lastMonth||''}: ${lastVal!==null?lastVal.toFixed(2)+'%':'—'}`;
-    const noteColor = c===worst ? '#C62828' : c===best ? '#2E7D32' : '#888';
-    kpiGrid.innerHTML += `<div class="kpi"><div class="kpi-accent" style="background:${CARRIER_COLORS[c]};"></div>
-      <div class="kpi-val" style="color:${CARRIER_COLORS[c]};">${avgs[c].toFixed(2)}%</div>
-      <div class="kpi-lbl">${displayName(c)} · prom. ${sortedMonths.length} meses</div>
-      <div class="kpi-note" style="color:${noteColor};">${note}</div></div>`;
-  });
-
-  // Alerta caída último mes vs promedio de meses anteriores
-  if(carriers.length && sortedMonths.length>1){
-    const prevMonths = sortedMonths.slice(0,-1);
-    let alertHtml = `<div class="card-title">⚠️ ${lastMonth} — variación en delivery rate</div>
-      <div class="card-sub">Comparado contra el promedio de ${prevMonths[0]}–${prevMonths[prevMonths.length-1]}</div>
-      <div style="display:grid;grid-template-columns:repeat(${carriers.length},1fr);gap:12px;">`;
-    carriers.forEach(c=>{
-      const prevAvg = prevMonths.reduce((s,m)=>s+RAW[c].dr[ALL_MONTHS.indexOf(m)],0)/prevMonths.length;
-      const lastVal = RAW[c].dr[lastIdx];
-      const diff = lastVal - prevAvg;
-      alertHtml += `<div style="background:${diff<0?'#FFF5F5':'#F0FFF4'};border-radius:8px;padding:14px;border-top:3px solid ${CARRIER_COLORS[c]};">
-        <div style="font-size:11px;font-weight:600;color:${CARRIER_COLORS[c]};">${displayName(c)}</div>
-        <div style="font-size:22px;font-weight:700;color:${diff<0?'#C62828':'#2E7D32'};margin:4px 0;">${lastVal.toFixed(2)}%</div>
-        <div style="font-size:11px;color:#888;">vs prom. ${prevAvg.toFixed(2)}% · ${diff>=0?'+':''}${diff.toFixed(2)}pp</div>
-      </div>`;
-    });
-    alertHtml += `</div>`;
-    document.getElementById('drAlertCard').innerHTML = alertHtml;
-    document.getElementById('drAlertCard').style.display='block';
-  } else {
-    document.getElementById('drAlertCard').style.display='none';
-  }
-
-  // Chart principal (barras)
-  destroyChart('chartDR');
-  if(carriers.length && sortedMonths.length){
-    const dataByCarrier = {};
-    carriers.forEach(c=>dataByCarrier[c]=sortedMonths.map(m=>RAW[c].dr[ALL_MONTHS.indexOf(m)]));
-    const drTopPlugin = {id:'drTop',afterDatasetsDraw(chart){
-      const ctx=chart.ctx;
-      chart.data.datasets.forEach((ds,di)=>{
-        const meta=chart.getDatasetMeta(di); if(meta.hidden) return;
-        const c=carriers[di];
-        meta.data.forEach((bar,mi)=>{
-          const val=dataByCarrier[c][mi];
-          const p=bar.getProps(['x','y','width'],true);
-          const barW=Math.abs(p.width||0); if(barW<16) return;
-          ctx.save(); ctx.textAlign='center';
-          ctx.fillStyle=state.visibleNames.includes(c)?CARRIER_COLORS[c]:'#888';
-          ctx.font=`600 ${Math.min(11,Math.max(9,barW*.36))}px -apple-system,sans-serif`;
-          ctx.fillText(val.toFixed(1)+'%',p.x,p.y-6);
-          ctx.restore();
-        });
-      });
-    }};
-    charts['chartDR'] = new Chart(document.getElementById('chartDR'),{
-      type:'bar',
-      data:{labels:sortedMonths,datasets:carriers.map(c=>({
-        label:displayName(c),data:dataByCarrier[c],
-        backgroundColor:sortedMonths.map(m=>m.includes('*')?CARRIER_COLORS[c]+'80':CARRIER_COLORS[c]),
-        borderRadius:4,borderWidth:0
-      }))},
-      options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:22}},
-        scales:{x:XOPTS,y:{...YOPTS,ticks:{...YOPTS.ticks,callback:v=>v.toFixed(1)+'%'},min:65,max:100}},
-        plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:8,padding:10}},
-          tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)}%`}}}
-      },plugins:[drTopPlugin]
-    });
-  }
-
-  // Chart línea
-  destroyChart('chartDRLine');
-  if(carriers.length && sortedMonths.length){
-    charts['chartDRLine'] = new Chart(document.getElementById('chartDRLine'),{
-      type:'line',
-      data:{labels:sortedMonths,datasets:carriers.map(c=>{
-        const vals=sortedMonths.map(m=>RAW[c].dr[ALL_MONTHS.indexOf(m)]);
-        return {
-          label:displayName(c),data:vals,
-          borderColor:state.visibleNames.includes(c)?CARRIER_COLORS[c]:'#888',
-          backgroundColor:(state.visibleNames.includes(c)?CARRIER_COLORS[c]:'#888')+'15',
-          borderWidth:2.5,pointRadius:5,
-          pointBackgroundColor:vals.map((v,i)=>sortedMonths[i].includes('*')?(CARRIER_COLORS[c]+'80'):CARRIER_COLORS[c]),
-          tension:.3,fill:true
-        };
-      })},
-      options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
-        scales:{x:XOPTS,y:{...YOPTS,ticks:{...YOPTS.ticks,callback:v=>v.toFixed(1)+'%'},min:65,max:100,title:{display:true,text:'Delivery Rate %',color:'#aaa',font:{size:10}}}},
-        plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:8,padding:10}},
-          tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)}%`}}}
-      }
-    });
-  }
-
-  // Tabla detalle
-  const thead=document.getElementById('drTableHead');
-  const tbody=document.getElementById('drTableBody');
-  const tfoot=document.getElementById('drTableFoot');
-  if(!carriers.length){
-    thead.innerHTML=''; tbody.innerHTML='<tr><td class="no-data">Selecciona al menos un carrier</td></tr>'; tfoot.innerHTML='';
-    return;
-  }
-  const carrierBg = {'DHL':'#0F2A3A','Estafeta':'#0F3A28','99min':'#3A1A30'};
-  let th1='<tr><th>Mes</th>', th2='<tr style="font-size:10px;"><th></th>';
-  carriers.forEach(c=>{
-    const bg=carrierBg[c]||'#333';
-    th1+=`<th colspan="2" style="text-align:center;background:${bg};">${displayName(c)}</th>`;
-    th2+=`<th style="background:${bg};">Total</th><th style="background:${bg};text-align:center;">DR%</th>`;
-  });
-  thead.innerHTML = th1+'</tr>'+th2+'</tr>';
-
-  let tbodyHtml='';
-  sortedMonths.forEach(m=>{
-    const midx=ALL_MONTHS.indexOf(m);
-    const partial = m.includes('*');
-    tbodyHtml += `<tr><td style="font-weight:500;">${m}${partial?' <span class="partial-badge">Parcial</span>':''}</td>`;
-    carriers.forEach(c=>{
-      const total=RAW[c].drTotal[midx];
-      const dr=RAW[c].dr[midx];
-      tbodyHtml += `<td>${total.toLocaleString()}</td><td style="text-align:center;"><span class="cr ${drClass(dr)}">${dr.toFixed(2)}%</span></td>`;
-    });
-    tbodyHtml += '</tr>';
-  });
-  tbody.innerHTML = tbodyHtml;
-
-  let tfootHtml='<tr><td>PROM.</td>';
-  carriers.forEach(c=>{
-    tfootHtml += `<td>—</td><td style="text-align:center;"><span style="background:${drSevColor(avgs[c])};color:#fff;padding:2px 7px;border-radius:7px;font-size:11px;font-weight:600;">${avgs[c].toFixed(2)}%</span></td>`;
-  });
-  tfootHtml += '</tr>';
-  tfoot.innerHTML = tfootHtml;
+// ── DELIVERY RATE — badge helper ──
+function drBadge(v) {
+  // Higher is better: green >90, yellow 85-90, orange 75-85, red <75
+  let bg, col;
+  if(v >= 90)      { bg='#E8F5E9'; col='#2E7D32'; }
+  else if(v >= 85) { bg='#FFFDE7'; col='#F9A825'; }
+  else if(v >= 75) { bg='#FFF3E0'; col='#E65100'; }
+  else             { bg='#FFEBEE'; col='#C62828'; }
+  return `<span style="background:${bg};color:${col};padding:2px 7px;border-radius:7px;font-weight:600;font-size:11px;">${v.toFixed(2)}%</span>`;
 }
+
+// ── DELIVERY RATE CHARTS ──
+(function buildDRCharts(){
+  const months = ['Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26*'];
+  const DR = {
+    'DHL':     [83.97,87.68,84.09,87.26,85.32,85.98,72.86],
+    'Estafeta':[90.73,91.58,90.17,91.69,92.17,92.21,74.37],
+    '99min':   [93.46,94.37,92.05,91.90,92.50,91.63,76.05],
+  };
+  const COLS = {'DHL':'#60A5FA','Estafeta':'#26C6A0','99min':'#E040A0'};
+  const XODR = {ticks:{color:'#555',font:{size:10},maxRotation:0},grid:{display:false},border:{display:false}};
+  const YODR = {ticks:{color:'#aaa',font:{size:10},callback:v=>v.toFixed(2)+'%'},grid:{color:'rgba(180,180,180,.12)'},border:{display:false},min:60,max:100};
+
+  // DR top label plugin
+  const drTopPlugin = {id:'drTop',afterDatasetsDraw(chart){
+    const ctx=chart.ctx;
+    chart.data.datasets.forEach((ds,di)=>{
+      const meta=chart.getDatasetMeta(di); if(meta.hidden) return;
+      const c=Object.keys(DR)[di];
+      meta.data.forEach((bar,mi)=>{
+        const val=DS_ORDER[di][mi];
+        const p=bar.getProps(['x','y','width'],true);
+        const barW=Math.abs(p.width||0); if(barW<16) return;
+        ctx.save(); ctx.textAlign='center';
+        ctx.fillStyle=COLS[c];
+        ctx.font=`600 ${Math.min(11,Math.max(9,barW*.36))}px -apple-system,sans-serif`;
+        ctx.fillText(val.toFixed(2)+'%',p.x,p.y-6);
+        ctx.restore();
+      });
+    });
+  }};
+
+  const DS_ORDER = [DR['DHL'],DR['Estafeta'],DR['99min']];
+
+  new Chart(document.getElementById('chartDR'),{
+    type:'bar',
+    data:{labels:months,datasets:Object.entries(DR).map(([c,v])=>({
+      label:c,data:v,backgroundColor:months.map((m,i)=>m.includes('*')?COLS[c]+'80':COLS[c]),
+      borderRadius:4,borderWidth:0
+    }))},
+    options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:22}},
+      scales:{x:XODR,y:YODR},
+      plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:8,padding:10}},
+        tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)}%`}}}
+    },plugins:[drTopPlugin]
+  });
+
+  new Chart(document.getElementById('chartDRLine'),{
+    type:'line',
+    data:{labels:months,datasets:Object.entries(DR).map(([c,v])=>({
+      label:c,data:v,borderColor:COLS[c],backgroundColor:COLS[c]+'15',
+      borderWidth:2.5,pointRadius:5,
+      pointBackgroundColor:v.map((val,i)=>i===v.length-1?COLS[c]+'80':COLS[c]),
+      tension:.3,fill:true
+    }))},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      scales:{x:XODR,y:{...YODR,title:{display:true,text:'Delivery Rate %',color:'#aaa',font:{size:10}}}},
+      plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:8,padding:10}},
+        tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)}%`}}}
+    }
+  });
+})();
 
 </script>
 </body>
